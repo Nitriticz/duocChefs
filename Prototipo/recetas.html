@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas · Duoc Chefs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ce5e571ae4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <img src="img/logo.png" alt="Logo-chefs-duoc">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="flex-sm-fill text-sm-center nav-link" href="menu.html">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="flex-sm-fill text-sm-center nav-link active" id="tabReceta" aria-current="page" href="#">Recetas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="flex-sm-fill text-sm-center nav-link" id="tabPedido" href="pedido.html">Mi Pedido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="flex-sm-fill text-sm-center nav-link" id="tabPedidos" href="pedidos.html">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="flex-sm-fill text-sm-center nav-link" id="tabUsuarios" href="usuarios.html">Usuarios</a>
+                    </li>
+
+                </ul>
+                <div class="container" id="userContainer">
+                    <p class="mb-0 me-3 text-end" id="user-info">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4 mb-4">
+        <div class="row">
+            <div class="col-3">
+                <select class="form-select" id="filtroPlatos">
+                    <option value="0" selected>Todos los platos</option>
+                    <option value="1">Entradas</option>
+                    <option value="2">Platos de Fondo</option>
+                    <option value="3">Ensaladas</option>
+                    <option value="4">Postres</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <form action="#">
+                    <input type="text" class="form-control" placeholder="Buscar Plato">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-5">
+        <div class="row g-5 me-0 platos">
+
+        </div>
+    </div>
+
+    <footer class="align-items-end p-3">
+        <div class="container-fluid text-start">
+            <div class="row align-items-start">
+                <div class="col-3">
+                    <img src="img/duoc-logo.png" class="img-fluid" alt="duoc-logo">
+                </div>
+                <div class="col-3">
+                    <h1>
+                        Sobre Nosotros
+                    </h1>
+                    <ul>
+                        <li>
+                            Misión
+                        </li>
+                        <li>
+                            Visión
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h1>
+                        Ubicación
+                    </h1>
+                    <ul>
+                        <li>Ver Ubicaciones</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h1>
+                        Horarios
+                    </h1>
+                    <ul>
+                        <li>
+                            Ver Horarios
+                        </li>
+                        <li>
+                            Reservas
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="platoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="platoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" style="max-width: 60rem;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="platoModalLabel">Ver Receta</h1>
+                    <button type="button" id="closeReceta" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <h3 id="ordenPlato" class="text-center"></h3>
+                    </div>
+                    <div class="row">
+                        <div class="img-border col-6">
+                            <img src="" alt="" id="ordenImg" style="width: 18rem;">
+                        </div>
+                        <div class="col-6 d-flex" style="align-items: center;">
+                            <div class="container" id="cont-info">
+                                <h3 class="id" id="ordenId"></h3>
+                                <p class="mb-0" id="ordenPrec"></p>
+                                <p class="mb-0" id="ordenModo"></p>
+                                <p class="mb-0"><b>Ingredientes:</b></p>
+                                <ul id="ordenIng" class="mb-0"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container" id="cont-prep">
+                            <p class="mb-0"><b>Preparación:</b></p>
+                            <ol id="ordenPrep"></ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 text-center recipe-items">
+                        <a class="btn"><i class="fa-solid fa-pen"></i><br>Editar</a>
+                        <a class="btn"><i class="fa-solid fa-trash-can"></i><br>Borrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="js/getRecipes.js"></script>
+    <script src="js/getUsers.js"></script>
+    <script src="js/utilites.js"></script>
+</body>
+
+</html>
